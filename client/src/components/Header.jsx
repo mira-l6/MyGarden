@@ -8,7 +8,7 @@ export default function Header() {
 
                 <a href="index.html" className="logo d-flex align-items-center">
                     <img src={logo} alt="GardenLogo" />
-                    <h1 className="sitename">My garden</h1> 
+                    {/* <h1 className="sitename">My garden</h1>  */}
                 </a>
 
                 <nav id="navmenu" className="navmenu">

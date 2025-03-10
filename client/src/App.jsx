@@ -1,5 +1,3 @@
-import './App.css'
-
 import Header from './components/Header'
 import IndexFunctionalities from './components/IndexFunctionalities'
 import IndexHero from './components/IndexHero'
@@ -15,9 +13,9 @@ function App() {
     <>
       <Header />
       <main>
-        <SubHeader />
-        {/* <IndexHero /> */}
-        {/* <IndexFunctionalities /> */}
+        {/* <SubHeader /> */}
+        <IndexHero />
+        <IndexFunctionalities />
       </main>
       <Footer />
     </>
