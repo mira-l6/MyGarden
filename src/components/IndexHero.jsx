@@ -10,42 +10,26 @@ export default function IndexHero() {
 
                 <div className="carousel-item active">
                     <img src={hero1} alt="" />
-                        <div className="carousel-container">
-                            <h2>Create and manage your own virtual garden</h2>
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
-                        </div>
+                    <div className="carousel-container">
+                        <h2>Create and manage your virtual garden</h2>
+                        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                    </div>
                 </div>
 
                 <div className="carousel-item">
                     <img src={hero2} alt="" />
-                        <div className="carousel-container">
-                            <h2>Organic vegetables is good for health</h2>
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
-                        </div>
+                    <div className="carousel-container">
+                        <h2>Organise your own existing garden</h2>
+                        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                    </div>
                 </div>
 
                 <div className="carousel-item">
                     <img src={hero3} alt="" />
-                        <div className="carousel-container">
-                            <h2>Providing Fresh Produce Every Single Day</h2>
-                            <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
-                        </div>
-                </div>
-
-                <div className="carousel-item">
-                    <img src="assets/img/hero_4.jpg" alt="" />
-                        <div className="carousel-container">
-                            <h2>Farming as a Passione</h2>
-                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius.</p>
-                        </div>
-                </div>
-
-                <div className="carousel-item">
-                    <img src="assets/img/hero_5.jpg" alt="" />
-                        <div className="carousel-container">
-                            <h2>Good Food For All</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
+                    <div className="carousel-container">
+                        <h2>Gather new information about variations of unique plants</h2>
+                        <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                    </div>
                 </div>
 
                 <a className="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
@@ -56,7 +40,12 @@ export default function IndexHero() {
                     <span className="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
                 </a>
 
-                <ol className="carousel-indicators"></ol>
+                <ol className="carousel-indicators">
+                    <li data-bs-target="#hero-carousel" data-bs-slide-to="0" className="active"></li>
+                    <li data-bs-target="#hero-carousel" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#hero-carousel" data-bs-slide-to="2"></li>
+                </ol>
+
 
             </div>
 

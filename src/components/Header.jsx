@@ -30,7 +30,7 @@ export default function Header() {
                                 <li><a href="#">Browse</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Our Services</a></li>
+                        <li><a href="">About</a></li>
                         <li><a href="">Register</a></li>
                         <li><a href="">Log in</a></li>
                         {/* for logged in users only -> operations with plants */}
