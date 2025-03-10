@@ -7,6 +7,7 @@ import IndexHero from './components/IndexHero'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import SubHeader from './components/SubHeader';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         {/* <IndexHero /> */}
         {/* <IndexFunctionalities /> */}
       </main>
+      <Footer />
     </>
   )
 }
