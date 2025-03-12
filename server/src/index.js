@@ -1,15 +1,14 @@
 import express from "express";
 import mongoose from 'mongoose';
 
-import {DB_URI} from '../'
-
+import 'dotenv/config';
 import router from './routes.js';
 
 const app = express();
 
 try {
     const uri = "mongodb://localhost:27017/plantDB"
-    await mongoose.connect(uri);
+    await mongoose.connect(process.env.DB_URI);
 
     console.log('Successfully connected to DB');
 
@@ -17,6 +16,7 @@ try {
     console.log(err.message);
 }
 
+app.use(express.urlencoded());
 app.use(router);
 
 app.listen(3000, () => {
