@@ -1,5 +1,16 @@
 import logo from '../assets/img/logo.png';
 
+import { Link } from 'react-router';
+
+const navigation = [
+    { name: 'Home', path: '/', guest: true },
+    { name: 'Plant Catalog', path: '/catalog', guest: true },
+    { name: 'About', path: '/about', guest: true },
+    { name: 'Register', path: '/register', guest: true },
+    { name: 'Log in', path: '/login', guest: true },
+    { name: 'Logout', path: '/logout', guest: false}
+]
+
 export default function Header() {
     
     return (
@@ -8,13 +19,17 @@ export default function Header() {
 
                 <a href="index.html" className="logo d-flex align-items-center">
                     <img src={logo} alt="GardenLogo" />
-                    {/* <h1 className="sitename">My garden</h1>  */}
+                    <h1 className="sitename">Virtual garden</h1> 
                 </a>
 
                 <nav id="navmenu" className="navmenu">
                     <ul>
-                        <li><a href="" className="active">Home</a></li>
-                        <li><a href="">Plant Catalog</a></li>
+                        {navigation.map(item => 
+                            <Link 
+                                key={item.name} 
+                                to={item.path}>{item.name}</Link>
+                        )}
+
                         <li className="dropdown">
                             <a href="#"><span>Plant Managment</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
@@ -30,11 +45,6 @@ export default function Header() {
                                 <li><a href="#">Browse</a></li>
                             </ul>
                         </li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Register</a></li>
-                        <li><a href="">Log in</a></li>
-                        {/* for logged in users only -> operations with plants */}
-                        <li><a href="">Logout</a></li>
                     </ul>
                     <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
