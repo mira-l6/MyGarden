@@ -1,4 +1,4 @@
-import SubHeader from "../components/SubHeader";
+import SubHeader from "../subheader/SubHeader";
 
 export default function About() {
     return (

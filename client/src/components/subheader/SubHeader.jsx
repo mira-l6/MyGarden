@@ -1,4 +1,4 @@
-import backgroundImage from '../assets/img/page-title-bg.webp';
+import backgroundImage from '../../assets/img/page-title-bg.webp';
 
 export default function SubHeader() {
     return (

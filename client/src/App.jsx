@@ -1,4 +1,4 @@
-import Header from './components/Header'
+import Header from './components/header/Header'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -6,10 +6,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Routes, Route } from 'react-router';
 
 // import SubHeader from './components/SubHeader';
-import Footer from './components/Footer';
-import Home from './pages/home';
-import About from './pages/About';
-import Login from './pages/Login';
+import Footer from './components/footer/Footer';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Login from './components/login/Login';
 
 function App() {
 

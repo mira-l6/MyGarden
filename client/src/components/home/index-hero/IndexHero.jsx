@@ -1,6 +1,6 @@
-import hero1 from '../assets/img/hero_1.jpg'
-import hero2 from '../assets/img/hero_2.jpg'
-import hero3 from '../assets/img/hero_3.jpg'
+import hero1 from '../../../assets/img/hero_1.jpg'
+import hero2 from '../../../assets/img/hero_2.jpg'
+import hero3 from '../../../assets/img/hero_3.jpg'
 
 export default function IndexHero() {
     return (
