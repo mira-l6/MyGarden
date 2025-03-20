@@ -1,0 +1,8 @@
+.copyright a{
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+.copyright a:hover{
+    color: green !important;
+}

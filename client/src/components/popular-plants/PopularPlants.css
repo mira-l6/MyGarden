@@ -1,0 +1,17 @@
+.carousel-button i{
+    color: black !important;
+}
+
+.carousel-button:hover i{
+    color: white !important;
+}
+
+.plant-item{
+    height: 25em !important;
+}
+
+.plantImage{
+    object-fit: cover;
+    height: 100% !important;
+    width: 100% !important;
+}

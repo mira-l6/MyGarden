@@ -1,3 +1,5 @@
+import PopularPlants from "../popular-plants/PopularPlants";
+import IndexAbout from "./index-about/IndexAbout";
 import IndexFunctionalities from "./index-functionalities/IndexFunctionalities";
 import IndexHero from "./index-hero/IndexHero";
 
@@ -6,6 +8,8 @@ export default function Home() {
         <>
             <IndexHero /> 
             <IndexFunctionalities />
+            <PopularPlants />
+            <IndexAbout />
         </>
     );
 }

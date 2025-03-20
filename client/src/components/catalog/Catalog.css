@@ -1,0 +1,42 @@
+/* Container to center the spinner in a small space */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Small container width */
+  height: 50px; /* Small container height */
+  background-color: #f7f7f7;
+  border-radius: 8px; /* Optional, to round corners */
+}
+
+/* The spinner circle */
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey background color */
+  border-top: 4px solid #3498db; /* Blue color for the spinning part */
+  border-radius: 50%; /* Makes it a circle */
+  width: 24px; /* Smaller spinner width */
+  height: 24px; /* Smaller spinner height */
+  animation: spin 1s linear infinite; /* Animation for spinning */
+}
+
+/* Keyframes to define the spinning animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.plant-image{
+  height: 100%;
+  object-fit: cover;
+}
+.post-img{
+  height: 28em;
+}
+
+.plant-description{
+  font-size: 1.3em;
+}
