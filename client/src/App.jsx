@@ -10,8 +10,9 @@ import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import About from './components/about/About';
 import Login from './components/login/Login';
-import Catalog from './components/catalog/Catalog';
+import Catalog from './components/plant-catalog/Catalog';
 import PlantDetails from './components/plant-details/PlantDetails';
+import Register from './components/register/Register';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/catalog' element={<Catalog />}/>
         <Route path='/catalog/details/:plantId' element={<PlantDetails />} />
         <Route path='/login' element={<Login />}/>
+        <Route path='/register' element={<Register />}/>
       </Routes>
 
       <Footer />

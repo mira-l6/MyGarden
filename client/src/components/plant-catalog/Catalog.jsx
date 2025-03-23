@@ -2,7 +2,7 @@ import useFetch from '../../hooks/useFetch.js'
 
 import './Catalog.css';
 
-import SubHeader from "../subheader/SubHeader";
+import SubHeader from "../subheader/SubHeader.jsx";
 import CatalogItem from "./catalog-item/CatalogItem.jsx";
 
 export default function Catalog() {

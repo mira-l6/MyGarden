@@ -1346,6 +1346,58 @@
     	}
     };
     var seedData = {
+        plants: {
+            "f1a5e1d3-91f9-4e3e-b1a1-430d38ad64ff": {
+                "id": "f1a5e1d3-91f9-4e3e-b1a1-430d38ad64ff",
+                "common_name": "Aloe Vera",
+                "family_common_name": "Aloe family",
+                "status": "accepted",
+                "rank": "species",
+                "image_url": "https://cdn.thestem.co.uk/production/imager-transforms/digitaloceanspaces/product-images/plants/aloe-vera/133346/Aloe-Vera-fibreclay-pot-desk_88ffd6034226624deae94168fab44b2e.jpg",
+                "description": "Aloe Vera is a succulent plant species of the genus Aloe. Known for its medicinal properties, especially in soothing skin burns.",
+                "care_tips": "Place in bright, indirect sunlight and water sparingly."
+            },
+            "d39d3d4c-36a6-4b72-b5ad-b8a1b56fcfa0": {
+                "id": "d39d3d4c-36a6-4b72-b5ad-b8a1b56fcfa0",
+                "common_name": "Snake Plant",
+                "family_common_name": "Asparagus family",
+                "status": "accepted",
+                "rank": "species",
+                "image_url": "https://vintagerevivals.com/wp-content/uploads/2019/04/Everything-You-Need-to-Know-About-Snake-Plants-13.jpg",
+                "description": "Snake Plant is a hardy plant that is easy to care for and can thrive in low light.",
+                "care_tips": "Water once every 2-3 weeks and place in indirect light."
+            },
+            "d9b16f24-5b50-47ba-bc29-91592f99802b": {
+                "id": "d9b16f24-5b50-47ba-bc29-91592f99802b",
+                "common_name": "Spider Plant",
+                "family_common_name": "Asparagus family",
+                "status": "accepted",
+                "rank": "species",
+                "image_url": "https://gardengoodsdirect.com/cdn/shop/files/spider-plant-16090320666666.jpg?v=1695462369",
+                "description": "Spider Plant is a popular houseplant known for its arching green leaves and white flowers.",
+                "care_tips": "Prefers bright, indirect light and well-drained soil. Water when the soil is dry."
+            },
+            "e7d8f7e7-c24f-455d-8c02-d83fa5c6027f": {
+                "id": "e7d8f7e7-c24f-455d-8c02-d83fa5c6027f",
+                "common_name": "Pothos",
+                "family_common_name": "Arum family",
+                "status": "accepted",
+                "rank": "species",
+                "image_url": "https://media.houseandgarden.co.uk/photos/64bff5f4d6a55acd0397054e/1:1/w_1280%2Cc_limit/Screenshot%25202023-07-25%2520at%252017.17.10.png",
+                "description": "Pothos is a resilient and easy-to-grow vine plant that thrives in various environments.",
+                "care_tips": "Grow in moderate light and water when the top layer of soil is dry."
+            },
+            "0b3f35f5-e74d-4893-9d13-6d0398d3f0e6": {
+                "id": "0b3f35f5-e74d-4893-9d13-6d0398d3f0e6",
+                "common_name": "Jade Plant",
+                "family_common_name": "Cress family",
+                "status": "accepted",
+                "rank": "species",
+                "image_url": "https://m.media-amazon.com/images/I/910gfB26YyL.jpg",
+                "description": "Jade Plant is a succulent with thick, glossy green leaves and is often associated with good luck.",
+                "care_tips": "Water when the soil is dry and place in bright, indirect sunlight."
+            }
+        },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

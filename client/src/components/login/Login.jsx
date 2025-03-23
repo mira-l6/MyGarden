@@ -1,74 +1,84 @@
-import logo from '../../assets/img/logo.png'
+import { useState } from "react";
+import { Form, Input, Button, message, Card, Typography } from "antd";
+import "./Login.css";
+import SubHeader from "../subheader/SubHeader";
+import { Link } from "react-router";
+
+const { Title, Paragraph } = Typography;
 
 export default function Login() {
-    return (
-      <>
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img
-              alt="Your Company"
-              src={logo}
-              className="logo-small"
-            />
-            <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-              Sign in to your account
-            </h2>
-          </div>
-  
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form action="#" method="POST" className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  />
-                </div>
-              </div>
-  
-              <div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
-                    Password
-                  </label>
-                  {/* <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Forgot password?
-                    </a>
-                  </div> */}
-                </div>
-                <div className="mt-2">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    required
-                    autoComplete="current-password"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  />
-                </div>
-              </div>
-  
-              <div>
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-green-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                >
-                  Sign in
-                </button>
-              </div>
-            </form>
+  const [loading, setLoading] = useState(false);
 
+  const onFinish = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      message.success("Login successful!");
+    }, 1500);
+  };
+
+  return (
+    <>
+      <SubHeader subtitle="Home" title="Login" />
+
+      <div className="login-container" id="main-section">
+        <Card className="login-card">
+          <div className="login-header">
           </div>
+
+          <Form
+            name="login"
+            layout="vertical"
+            onFinish={onFinish}
+            className="login-form"
+          >
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[{ required: true, message: "Please input your email!" }]}
+            >
+              <Input className="login-input" />
+            </Form.Item>
+
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: "Please input your password!" }]}
+            >
+              <Input.Password className="login-input" />
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                className="login-button"
+              >
+                Login
+              </Button>
+            </Form.Item>
+          </Form>
+        </Card>
+        <div className="login-message">
+        <Card className="promo-card" bordered={true}>
+          <div className="promo-content">
+            <Title level={2}>Grow Your Virtual Garden 🌱</Title>
+            <Paragraph>
+              Create, design, and cultivate your dream garden online. Track your plants, customize layouts, and share with friends.
+            </Paragraph>
+            <ul className="features-list">
+              <li>🌸 Customizable Garden Layouts</li>
+              <li>🌿 Real-time Plant Tracking</li>
+              <li>🌞 Community Sharing & Challenges</li>
+            </ul>
+
+            <h5 className="register-redirect"><Link to='/register'>Do not have a profile? Register...</Link></h5>
+          </div>
+        </Card>
         </div>
-      </>
-    )
-  }
-  
+      </div>
+    </>
+  );
+};
+

@@ -1,4 +1,4 @@
-import PopularPlants from "../popular-plants/PopularPlants";
+import PopularPlants from "../plant-popular/PopularPlants";
 import IndexAbout from "./index-about/IndexAbout";
 import IndexFunctionalities from "./index-functionalities/IndexFunctionalities";
 import IndexHero from "./index-hero/IndexHero";
