@@ -23,8 +23,6 @@ export default function ServicesSection() {
             });
     }, []);
 
-    console.log(plants);
-
     return (
         <section id="services-2" className="services-2 section dark-background">
             <div className="container section-title" data-aos="fade-up">
@@ -72,8 +70,8 @@ export default function ServicesSection() {
                                 <i className="bi bi-arrow-right-short"></i>
                             </button>
 
-                            {plants.map(plant => (
-                                <SwiperSlide key={plant._id}>
+                            {plants.map((plant, index) => (
+                                <SwiperSlide key={plant._id || index}>
                                     <div className="service-item plant-item">
                                         <div className="service-item-contents">
                                             <a href="#indexAbout">

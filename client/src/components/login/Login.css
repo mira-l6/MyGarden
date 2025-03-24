@@ -36,7 +36,9 @@
 .login-button {
   width: 100%;
   height: 50px;
-  background-color: #34c759;
+  background-color: darkgreen;
+  color: white;
+  font-weight: 500 !important;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -71,18 +73,21 @@
 }
 
 .login-redirect{
-  padding-top: 4.4em;
+  padding-top: 5.2em;
 }
 
 .register-redirect{
   margin-bottom: 0;
 }
-.register-redirect, .login-redirect{
-  color:#222 !important
-}
 
 .ant-card-body{
   padding-bottom: 0em !important;
+}
+
+.features-list li{
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-color: darkgreen;
 }
 
 @media (max-width: 768px) {

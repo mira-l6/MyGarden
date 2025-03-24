@@ -16,13 +16,8 @@ export default function IndexAbout() {
                         <h2 className="content-title mb-4">Plants Make Life Better</h2>
                         <p className="mb-5">
                             Explore, Learn, and Grow
-                            <hr />
                             Take a stroll through the garden to discover different plant varieties, learn about their benefits, and gain tips on how to care for them. Whether you are a seasoned gardener or just starting out, there’s always something new to discover in the world of plants.
 
-                            <hr />
-                            A Breath of Fresh Air
-                            <hr />
-                            Plants not only brighten up any space but also bring a sense of tranquility and connection to nature. In our virtual garden, you can relax, breathe deeply, and let nature’s beauty take center stage.
                         </p>
 
                         <p><Link to="/login" className="btn-cta">Create your Garden</Link></p>

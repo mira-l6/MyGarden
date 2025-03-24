@@ -17,10 +17,10 @@ export default function Header() {
         <header id="header" className="header d-flex align-items-center position-relative">
             <div className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-                <a href="index.html" className="logo d-flex align-items-center">
+                <Link to="/" className="logo d-flex align-items-center">
                     <img src={logo} alt="GardenLogo" />
                     <h1 className="sitename">Virtual garden</h1> 
-                </a>
+                </Link>
 
                 <nav id="navmenu" className="navmenu">
                     <ul>

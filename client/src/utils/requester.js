@@ -1,6 +1,6 @@
 const request = async (method, url, data, options = {}) => {
 
-    if(options.method.toLowerCase() !== 'get'){
+    if(options.method !== 'get'){
 
         options.method = method;
     }
@@ -25,7 +25,10 @@ const request = async (method, url, data, options = {}) => {
     return result;
 }
 
-export const post = (url, data) => request('post', url, data);
-export const get = (url) => request('get', url);
-export const put = (url, data) => request('put', url, data);
-export const remove = (url) => request('delete', url);
+export default {
+    get: request.bind(null, 'get'),
+    post: request.bind(null, 'post'),
+    put: request.bind(null, 'put'),
+    delete: request.bind(null, 'delete'),
+    baseRequest: request
+}
