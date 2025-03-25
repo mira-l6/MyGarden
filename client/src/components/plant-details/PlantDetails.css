@@ -2,23 +2,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px; /* Small container width */
-    height: 50px; /* Small container height */
+    width: 50px; 
+    height: 50px; 
     background-color: #f7f7f7;
-    border-radius: 8px; /* Optional, to round corners */
+    border-radius: 8px; 
   }
   
-  /* The spinner circle */
   .spinner {
-    border: 4px solid #f3f3f3; /* Light grey background color */
-    border-top: 4px solid #3498db; /* Blue color for the spinning part */
-    border-radius: 50%; /* Makes it a circle */
-    width: 24px; /* Smaller spinner width */
-    height: 24px; /* Smaller spinner height */
-    animation: spin 1s linear infinite; /* Animation for spinning */
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid #3498db; 
+    border-radius: 50%; 
+    width: 24px; 
+    height: 24px; 
+    animation: spin 1s linear infinite; 
+  }
+
+  .delete-popup{
+    z-index: 3;
+  }
+
+  .image-container{
+    height: 50em;
   }
   
-  /* Keyframes to define the spinning animation */
   @keyframes spin {
     0% {
       transform: rotate(0deg);

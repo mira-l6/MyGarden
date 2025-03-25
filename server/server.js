@@ -1403,7 +1403,7 @@
                 "family_common_name": "Arum family",
                 "status": "popular",
                 "rank": "species",
-                "image_url": "https://cdn11.bigcommerce.com/s-fr32feerow/product_images/uploaded_images/peace-lily-01.jpg",
+                "image_url": "https://thewateringcan.ca/wp-content/uploads/2021/03/6-Peace-lily-scaled-1-scaled-scaled.jpg",
                 "description": "Peace Lily is a beautiful, air-purifying plant with dark green leaves and white flowers, perfect for low-light conditions.",
                 "care_tips": "Keep the soil moist but not soggy. Thrives in indirect sunlight. Mist leaves occasionally",
                 "_createdOn": 1742904694235,

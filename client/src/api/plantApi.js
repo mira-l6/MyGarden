@@ -93,3 +93,20 @@ export function useEditPlant() {
         edit
     }
 }
+
+export function useDeletePlant() {
+
+    const { request } = useAuth();
+
+    const deletePlant = async (plantId) => {
+
+        const result = await request.delete(`${baseUrl}/${plantId}`);
+        //TODO: validate
+        console.log(result);
+        return result;
+    }
+
+    return {
+        deletePlant
+    }
+}
