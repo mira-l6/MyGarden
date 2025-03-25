@@ -1,4 +1,5 @@
 import requester from "../utils/requester";
+import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/users';
 
@@ -25,5 +26,22 @@ export function useRegister() {
 
     return {
         register,
+    }
+}
+
+export function useLogout() {
+
+    const { accessToken, request } = useAuth();
+
+    const logout = () => {
+        
+        const result = request.post(`${baseUrl}/logout`);
+        //TODO: validate
+        return result
+    }
+
+    return {
+        logout,
+        isLoggedOut: !!accessToken
     }
 }

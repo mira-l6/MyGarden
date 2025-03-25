@@ -10,7 +10,7 @@ import { UserContext } from "../../contexts/UserContext";
 export default function Login() {
 
   const navigate = useNavigate();
-  const { loginHandler } = useContext(UserContext);
+  const { userLoginHandler } = useContext(UserContext);
 
   const { login } = useLogin();
   const loginAction = async (formData) => {
@@ -19,7 +19,7 @@ export default function Login() {
 
     const result = await login(email, password);
 
-    loginHandler(result);
+    userLoginHandler(result);
 
     navigate('/plants');
   }

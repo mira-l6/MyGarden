@@ -2,11 +2,30 @@ import './Catalog.css';
 
 import SubHeader from "../subheader/SubHeader.jsx";
 import CatalogItem from "./catalog-item/CatalogItem.jsx";
+
+import ReactPaginate from "react-paginate";
+
 import { usePlants } from '../../api/plantApi.js';
+import { useState } from 'react';
 
 export default function Catalog() {
 
-    const [plants, pending] = usePlants();
+    const [filter, setFilter] = useState({
+        page: 1,
+        pageSize: 6
+    });
+
+    const [plants, pending, totalPages] = usePlants(filter);
+
+    const pageClickHandler = ({ selected }) => {
+
+        setFilter(state => {
+            return {
+                ...state,
+                page: selected + 1
+            }
+        })
+    }
 
     return (
         <>
@@ -37,6 +56,24 @@ export default function Catalog() {
 
                     </div>
 
+                    {totalPages > 1 && (
+                        <div className="pagination-container mt-5">
+                            <ReactPaginate
+                                previousLabel="<"
+                                nextLabel=">"
+                                breakLabel="..."
+                                pageCount={totalPages}
+                                marginPagesDisplayed={2}
+                                pageRangeDisplayed={3}
+                                onPageChange={pageClickHandler}
+                                containerClassName="pagination flex justify-center gap-2"
+                                pageClassName="px-3 py-2 border rounded-lg cursor-pointer hover:bg-gray-200"
+                                activeClassName="bg-green-500 text-white"
+                                previousClassName="px-3 py-2 border rounded-lg cursor-pointer hover:bg-gray-200"
+                                nextClassName="px-3 py-2 border rounded-lg cursor-pointer hover:bg-gray-200"
+                            />
+                        </div>
+                    )}
                 </div>
 
             </section>

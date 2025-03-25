@@ -11,7 +11,7 @@ import "../login/Login.css"; // Reusing same styles
 export default function Register() {
 
   const { register } = useRegister();
-  const { loginHandler } = useContext(UserContext);
+  const { userLoginHandler } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Register() {
 
     const result = await register(email, password);
 
-    loginHandler(result);
+    userLoginHandler(result);
     navigate('/plants');
 
   }

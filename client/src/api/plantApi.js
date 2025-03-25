@@ -7,36 +7,50 @@ const baseUrl = 'http://localhost:3030/data/plants';
 export function usePlants(filter = {}) {
 
     const [plants, setPlants] = useState([]);
+    const [pages, setPages] = useState(1);
     const [pending, setPending] = useState(false);
 
-    let query;
+    let query = new URLSearchParams();
+    let pageSize;
 
     if (filter.pageSize) {
-
-        query = new URLSearchParams({
-            pageSize: filter.pageSize,
-            where: 'status="well-known"'
-        })
+        pageSize = filter.pageSize;
+        query.append('pageSize', filter.pageSize)
     }
-    const url = filter.pageSize ? `${baseUrl}?${query}` : baseUrl;
+    if (filter.page) {
+        query.append('offset', filter.pageSize * (filter.page - 1));
+    }
+    if (filter.where) {
+        query.append('where', `${filter.where}`)
+    }
+    if (filter.sortBy) {
+        query.append('sortBy', `${filter.sortBy}`)
+    }
+
+    const url = `${baseUrl}?${query.toString()}`;
 
     useEffect(() => {
 
         setPending(true);
 
+        requester.get(baseUrl)
+            .then(data => {
+                setPages(Math.ceil(data.length / pageSize) || 1)
+            })
+
         requester.get(url)
             .then(data => {
 
-                console.log(url);
                 setPending(false);
                 setPlants(data)
             });
 
-    }, [url])
+    }, [url, pageSize])
 
     return [
         plants,
-        pending
+        pending,
+        pages,
     ]
 }
 
@@ -110,3 +124,9 @@ export function useDeletePlant() {
         deletePlant
     }
 }
+
+//* query for popular plants
+// query = new URLSearchParams({
+//     pageSize: filter.pageSize,
+//     where: 'status="well-known"'
+// })

@@ -7,16 +7,16 @@ export default function UserProvider({
 
     const [auth, setAuth] = usePersistedState('auth', {});
 
-    const loginHandler = (data) => {
+    const userLoginHandler = (data) => {
         setAuth(data);
     }
 
-    const logoutHandler = () => {
+    const userLogoutHandler = () => {
         setAuth({});
     }
 
     return (
-        <UserContext.Provider value={{ ...auth, loginHandler, logoutHandler }}>
+        <UserContext.Provider value={{ ...auth, userLoginHandler, userLogoutHandler }}>
             {children}
         </UserContext.Provider>
     );
