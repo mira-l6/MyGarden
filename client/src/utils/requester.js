@@ -1,11 +1,12 @@
 const request = async (method, url, data, options = {}) => {
 
-    if(options.method !== 'get'){
+    if(method !== 'get'){
 
         options.method = method;
     }
 
     if(data){
+
         options = {
             ...options,
             headers: {

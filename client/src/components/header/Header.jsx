@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const navigation = [
     { name: 'Home', path: '/', guest: true },
-    { name: 'Plant Catalog', path: '/catalog', guest: true },
+    { name: 'Plant Catalog', path: '/plants', guest: true },
     { name: 'About', path: '/about', guest: true },
     { name: 'Register', path: '/register', guest: true },
     { name: 'Log in', path: '/login', guest: true },
@@ -37,8 +37,8 @@ export default function Header() {
                                 <li className="dropdown">
                                     <a href="#"><span>Managment</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
                                     <ul>
-                                        <li><a href="#">Personal Garden</a></li>
-                                        <li><a href="#">Create</a></li>
+                                        <li><Link to="">Personal Garden</Link></li>
+                                        <li><Link to="/plants/create">Create</Link></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Seach for additions</a></li>

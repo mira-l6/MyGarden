@@ -29,7 +29,7 @@ export default function CatalogItem({
 
                     <hr />
 
-                    <Link to={`/catalog/details/${plant.id}`} className="readmore stretched-link"><span>Details</span><i className="bi bi-arrow-right"></i></Link>
+                    <Link to={`/plants/details/${plant._id}`} className="readmore stretched-link"><span>Details</span><i className="bi bi-arrow-right"></i></Link>
                 </div>
 
             </div>

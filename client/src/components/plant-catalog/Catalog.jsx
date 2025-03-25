@@ -1,20 +1,15 @@
-import useFetch from '../../hooks/useFetch.js'
-
 import './Catalog.css';
 
 import SubHeader from "../subheader/SubHeader.jsx";
 import CatalogItem from "./catalog-item/CatalogItem.jsx";
+import { usePlants } from '../../api/plantApi.js';
 
 export default function Catalog() {
 
-    const baseUrl = 'http://localhost:3030/jsonstore/plants';
-
-    const [pending, result] = useFetch(baseUrl, []);
-    const plants = Object.values(result);
+    const [plants, pending] = usePlants();
 
     return (
         <>
-
             <SubHeader subtitle="Home" title="Plant Catalog" />
 
             <section id="recent-posts" className="recent-posts section">
@@ -32,7 +27,7 @@ export default function Catalog() {
                                     <div className="spinner"></div>
                                 </div>
                                 : plants.length > 0 ?
-                                    plants.map(plant => <CatalogItem key={plant.id} plant={plant} />)
+                                    plants.map(plant => <CatalogItem key={plant._id} plant={plant} />)
                                     : <>
                                         <hr />
                                         <h1>There are no posts</h1>

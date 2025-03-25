@@ -15,6 +15,8 @@ import PlantDetails from './components/plant-details/PlantDetails';
 import Register from './components/register/Register';
 
 import UserProvider from './providers/UserProvider';
+import PlantCreate from './components/plant-create/PlantCreate';
+import PlantEdit from './components/plant-edit/PlantEdit';
 
 function App() {
 
@@ -25,8 +27,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/catalog' element={<Catalog />} />
-        <Route path='/catalog/details/:plantId' element={<PlantDetails />} />
+        <Route path='/plants' element={<Catalog />} />
+        <Route path='/plants/details/:plantId' element={<PlantDetails />} />
+        <Route path='/plants/create' element={<PlantCreate />}/>
+        <Route path='/plants/edit/:plantId' element={<PlantEdit />}/>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>

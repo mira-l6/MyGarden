@@ -7,21 +7,11 @@ import 'swiper/css/pagination';
 
 import './PopularPlants.css';
 
-import { useEffect, useState } from 'react';
+import { usePlants } from '../../api/plantApi';
 
 export default function ServicesSection() {
 
-    const [plants, setPlants] = useState([]);
-
-    useEffect(() => {
-
-        fetch('http://localhost:3030/jsonstore/plants')
-            .then(response => response.json())
-            .then(data => {
-                const plants = Object.values(data);
-                setPlants([plants[0], plants[1], plants[2], plants[3], plants[4]])
-            });
-    }, []);
+    const [popularPlants] = usePlants({ pageSize: 5 });
 
     return (
         <section id="services-2" className="services-2 section dark-background">
@@ -70,19 +60,21 @@ export default function ServicesSection() {
                                 <i className="bi bi-arrow-right-short"></i>
                             </button>
 
-                            {plants.map((plant, index) => (
-                                <SwiperSlide key={plant._id || index}>
-                                    <div className="service-item plant-item">
-                                        <div className="service-item-contents">
-                                            <a href="#indexAbout">
-                                                <span className="service-item-category">Plant</span>
-                                                <h2 className="service-item-title">{plant.common_name}</h2>
-                                            </a>
+                            {
+                                popularPlants.map((plant, index) => (
+                                    <SwiperSlide key={plant._id || index}>
+                                        <div className="service-item plant-item">
+                                            <div className="service-item-contents">
+                                                <a href="#indexAbout">
+                                                    <span className="service-item-category">Plant</span>
+                                                    <h2 className="service-item-title">{plant.common_name}</h2>
+                                                </a>
+                                            </div>
+                                            <img src={plant.image_url} alt={plant.common_name} className="img-fluid plantImage" />
                                         </div>
-                                        <img src={plant.image_url} alt={plant.common_name} className="img-fluid plantImage" />
-                                    </div>
-                                </SwiperSlide>
-                            ))}
+                                    </SwiperSlide>
+                                ))
+                            }
 
 
                         </Swiper>

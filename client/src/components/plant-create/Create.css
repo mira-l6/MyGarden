@@ -1,0 +1,12 @@
+.submit-text{
+    font-weight: 500;
+}
+
+h2{
+    margin-bottom: 2em !important;
+}
+
+.form-container{
+    border-top: 4px solid black;
+    margin-top: 2em;
+}

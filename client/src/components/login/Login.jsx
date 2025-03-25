@@ -21,7 +21,7 @@ export default function Login() {
 
     loginHandler(result);
 
-    navigate('/catalog');
+    navigate('/plants');
   }
 
   return (

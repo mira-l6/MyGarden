@@ -28,7 +28,7 @@ export default function Register() {
     const result = await register(email, password);
 
     loginHandler(result);
-    navigate('/catalog');
+    navigate('/plants');
 
   }
 

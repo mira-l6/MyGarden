@@ -1,16 +1,14 @@
-import { useParams } from "react-router";
-import useFetch from "../../hooks/useFetch";
+import { Link, useParams } from "react-router";
 
 import './PlantDetails.css';
 
 import SubHeader from "../subheader/SubHeader";
+import { usePlant } from "../../api/plantApi";
 
 export default function PlantDetails() {
 
     const { plantId } = useParams();
-    const [pending, plant] = useFetch(`http://localhost:3030/jsonstore/plants/${plantId}`);
-
-    console.log(plant, pending)
+    const [plant, pending] = usePlant(plantId);
 
     return (
         <>
@@ -60,6 +58,12 @@ export default function PlantDetails() {
                                             <p className="text-white opacity-80">{plant.rank}</p>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="buttons flex gap-4 mt-6">
+                                    <button className="px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-white-300 transition">
+                                        <Link to={`/plants/edit/${plantId}`} className="text-black no-underline" >Edit</Link></button>
+                                    <button className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition">Delete</button>
                                 </div>
                             </div>
                         </div>
