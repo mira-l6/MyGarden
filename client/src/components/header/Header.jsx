@@ -62,8 +62,7 @@ export default function Header() {
                                                     <li><Link to="/plants/create">Create</Link></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Seach for additions</a></li>
-                                            <li><a href="#">Browse</a></li>
+                                            <li><Link to="/plants">Seach for additions</Link></li>
                                         </ul>
                                     </li>
                                 </>

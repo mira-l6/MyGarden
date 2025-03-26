@@ -13,19 +13,14 @@ export function usePlants(filter = {}) {
     let query = new URLSearchParams();
     let pageSize;
 
+    if (filter.where) { query.append('where', `${filter.where}`) }
     if (filter.pageSize) {
         pageSize = filter.pageSize;
         query.append('pageSize', filter.pageSize)
     }
-    if (filter.page) {
-        query.append('offset', filter.pageSize * (filter.page - 1));
-    }
-    if (filter.where) {
-        query.append('where', `${filter.where}`)
-    }
-    if (filter.sortBy) {
-        query.append('sortBy', `${filter.sortBy}`)
-    }
+    if (filter.page) { query.append('offset', filter.pageSize * (filter.page - 1)); }
+    if (filter.sortBy) { query.append('sortBy', `${filter.sortBy}`) }
+    if (filter.search) { query.append('where', `common_name Like "${filter.search}"`); }
 
     const url = `${baseUrl}?${query.toString()}`;
 
@@ -33,10 +28,12 @@ export function usePlants(filter = {}) {
 
         setPending(true);
 
-        requester.get(baseUrl)
-            .then(data => {
-                setPages(Math.ceil(data.length / pageSize) || 1)
-            })
+        if (filter.page) {
+            requester.get(baseUrl)
+                .then(data => {
+                    setPages(Math.ceil(data.length / pageSize) || 1)
+                })
+        }
 
         requester.get(url)
             .then(data => {
@@ -45,7 +42,7 @@ export function usePlants(filter = {}) {
                 setPlants(data)
             });
 
-    }, [url, pageSize])
+    }, [url, pageSize, filter])
 
     return [
         plants,

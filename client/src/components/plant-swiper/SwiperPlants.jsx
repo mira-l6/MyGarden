@@ -5,19 +5,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import './PopularPlants.css';
+import './SwiperPlants.css';
+import { useNavigate } from 'react-router';
 
-import { usePlants } from '../../api/plantApi';
+export default function SwiperPlants({
+    plants,
+    title,
+    subtitle
+}) {
 
-export default function ServicesSection() {
-
-    const [popularPlants] = usePlants({ pageSize: 5 });
+    const navigate = useNavigate();
 
     return (
         <section id="services-2" className="services-2 section dark-background">
             <div className="container section-title" data-aos="fade-up">
-                <h2>Most popular plants</h2>
-                <p>Preview</p>
+                <h2>{title}</h2>
+                <p>{subtitle}</p>
             </div>
 
             <div className="services-carousel-wrap">
@@ -61,9 +64,9 @@ export default function ServicesSection() {
                             </button>
 
                             {
-                                popularPlants.map((plant, index) => (
+                                plants.map((plant, index) => (
                                     <SwiperSlide key={plant._id || index}>
-                                        <div className="service-item plant-item">
+                                        <div onClick={() => navigate(`/plants/details/${plant._id}`)} className="service-item plant-item">
                                             <div className="service-item-contents">
                                                 <a href="#indexAbout">
                                                     <span className="service-item-category">Plant</span>

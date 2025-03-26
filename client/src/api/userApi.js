@@ -34,7 +34,7 @@ export function useLogout() {
     const { accessToken, request } = useAuth();
 
     const logout = () => {
-        
+
         const result = request.post(`${baseUrl}/logout`);
         //TODO: validate
         return result
@@ -44,4 +44,20 @@ export function useLogout() {
         logout,
         isLoggedOut: !!accessToken
     }
+}
+
+export function useUser() {
+
+    const { request } = useAuth();
+
+    const getUser = async (userId) => {
+
+        console.log(`${baseUrl}/${userId}`)
+        const result = await request.get(`http://localhost:3030/users/me`);
+        console.log(result)
+        //TODO: validate
+        return result;
+    }
+
+    return { getUser }
 }

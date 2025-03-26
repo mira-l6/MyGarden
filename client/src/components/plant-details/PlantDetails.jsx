@@ -3,6 +3,10 @@ import "./PlantDetails.css";
 import SubHeader from "../subheader/SubHeader";
 import { useDeletePlant, usePlant } from "../../api/plantApi";
 import { useState } from "react";
+import CommentsSwiper from "../comments-swiper/CommentsSwiper";
+import CommentsCreate from "../comments-create/CommentsCreate";
+import PlantDeletePopup from "./plant-delete-popup/PlantDeletePopup";
+import { useComments } from "../../api/commentApi";
 
 export default function PlantDetails() {
 
@@ -10,6 +14,8 @@ export default function PlantDetails() {
 
     const { plantId } = useParams();
     const [plant, pending] = usePlant(plantId);
+
+    const [comments, setComments] = useComments(plantId);
 
     const { deletePlant } = useDeletePlant();
     const [showDelete, setShowDelete] = useState(false);
@@ -27,6 +33,13 @@ export default function PlantDetails() {
         }
 
         navigate('/plants');
+    }
+
+    const commentCreateHandler = (value) => {
+        setComments(state => [
+            ...state,
+            value
+        ])
     }
 
     return (
@@ -53,7 +66,7 @@ export default function PlantDetails() {
                             </div>
                             <div className="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
                                 <h3 className="content-subtitle text-white opacity-50 mt-5">Details</h3>
-                                <h2 className="content-title mb-4">
+                                <h2 className="content-title mb-4 text-dark">
                                     <strong>{plant.common_name}</strong>
                                 </h2>
                                 <p className="plant-description opacity-50">{plant.description}</p>
@@ -90,26 +103,29 @@ export default function PlantDetails() {
                                 </div>
 
                                 <div className="buttons flex gap-4 mt-6">
-                                    <button className="px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-gray-300 transition">
-                                        <Link to={`/plants/edit/${plantId}`} className="text-black no-underline">Edit</Link>
+                                    <button className="px-4 py-2 text-white bg-green-600 rounded-lg shadow-md hover:bg-gray-300 transition">
+                                        <Link to={`/plants/edit/${plantId}`} className="edit-button text-white no-underline">Edit</Link>
                                     </button>
-                                    <button className="px-4 py-2 bg-red-600 text-dark rounded-lg shadow-md hover:bg-red-700 transition" onClick={revealDelete}>Delete</button>
+                                    <button className="delete-button text-white px-4 py-2 bg-red-500 rounded-lg shadow-md hover:bg-red-700 transition" onClick={revealDelete}>Delete</button>
                                 </div>
 
-                                {showDelete && (
-                                    <div className="delete-popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                        <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-                                            <h2 className="text-lg text-dark font-bold mb-4 text-gray-800">Confirm Deletion</h2>
-                                            <p className="mb-4 text-dark">Are you sure you want to delete {`"${plant.common_name}"`}?</p>
-                                            <div className="flex justify-end gap-4">
-                                                <button className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400 transition" onClick={hideDelete}>Cancel</button>
-                                                <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition" onClick={deleteHandler}>Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
+                                {showDelete && <PlantDeletePopup
+                                    plant={plant}
+                                    hideDelete={hideDelete}
+                                    deleteHandler={deleteHandler} />}
                             </div>
                         </div>
+
+                    </div>
+
+                </div>
+                <div className="mt-10 p-6 shadow-md grid md:grid-cols-3 gap-6">
+                    <div className="md:col-span-2">
+                        <h3 className="text-xl font-bold mb-4 text-dark">Comments</h3>
+                        <CommentsSwiper comments={comments} />
+                    </div>
+                    <div className="p-4 shadow-md">
+                        <CommentsCreate plantId={plantId} onCreate={commentCreateHandler} />
                     </div>
                 </div>
             </section>

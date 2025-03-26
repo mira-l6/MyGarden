@@ -40,3 +40,14 @@
 .plant-description{
   font-size: 1.3em;
 }
+
+.search-input{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 4em;
+}
+
+.search-container{
+  width: 80% !important;
+}
