@@ -1,4 +1,5 @@
 import { useCreateComment } from "../../api/commentApi";
+import { usePlant } from "../../api/plantApi";
 import useAuth from "../../hooks/useAuth";
 
 export default function CommentsCreate({
@@ -9,6 +10,9 @@ export default function CommentsCreate({
     const { create } = useCreateComment();
     const { email } = useAuth();
 
+    const [ plant ] = usePlant(plantId);
+    
+
     const createAction = async (formData) => {
 
         const comment = Object.fromEntries(formData);
@@ -17,6 +21,7 @@ export default function CommentsCreate({
             comment: comment.content,
             plantId,
             email,
+            plantImage: plant.image_url
         };
 
         const result = await create(payload);

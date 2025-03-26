@@ -23,7 +23,7 @@ export default function PlantDetails() {
     const revealDelete = () => setShowDelete(true);
     const hideDelete = () => setShowDelete(false);
 
-    const deleteHandler = async () => {
+    const plantDeleteHandler = async () => {
 
         try {
             await deletePlant(plantId);
@@ -40,6 +40,13 @@ export default function PlantDetails() {
             ...state,
             value
         ])
+    }
+
+    const commentDeleteHandler = (value) => {
+
+        setComments(state => {
+            return state.filter(s => s._id!== value);
+        })
     }
 
     return (
@@ -112,7 +119,7 @@ export default function PlantDetails() {
                                 {showDelete && <PlantDeletePopup
                                     plant={plant}
                                     hideDelete={hideDelete}
-                                    deleteHandler={deleteHandler} />}
+                                    deleteHandler={plantDeleteHandler} />}
                             </div>
                         </div>
 
@@ -121,8 +128,13 @@ export default function PlantDetails() {
                 </div>
                 <div className="mt-10 p-6 shadow-md grid md:grid-cols-3 gap-6">
                     <div className="md:col-span-2">
-                        <h3 className="text-xl font-bold mb-4 text-dark">Comments</h3>
-                        <CommentsSwiper comments={comments} />
+                        <h3 className="text-xl font-bold mb-4 ps-5 text-dark">Comments</h3>
+                        {comments.length > 0
+                            ? <CommentsSwiper 
+                                comments={comments} 
+                                isUserImage={true}
+                                onDelete={commentDeleteHandler} />
+                            : <h5 className="ps-5">No comments yet</h5>}
                     </div>
                     <div className="p-4 shadow-md">
                         <CommentsCreate plantId={plantId} onCreate={commentCreateHandler} />

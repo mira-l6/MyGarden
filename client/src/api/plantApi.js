@@ -42,7 +42,7 @@ export function usePlants(filter = {}) {
                 setPlants(data)
             });
 
-    }, [url, pageSize, filter])
+    }, [url, pageSize, filter.page])
 
     return [
         plants,
