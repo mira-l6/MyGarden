@@ -4,23 +4,28 @@ import SubHeader from "../subheader/SubHeader";
 
 import '../plant-create/Create.css';
 import { useEditPlant, usePlant } from '../../api/plantApi';
+import { useMessageContext } from '../../contexts/MessageContext';
 
 export default function PlantEdit() {
 
     const { plantId } = useParams();
-    const [plant] = usePlant(plantId);
+    const [plant,] = usePlant(plantId);
 
     const { edit } = useEditPlant();
 
     const navigate = useNavigate();
+    const { showMessage } = useMessageContext();
 
     const editAction = async (formData) => {
 
         const plantData = Object.fromEntries(formData);
 
-        edit(plantId, plantData);
+        const result = await edit(plantId, plantData);
+        if (!result.common_name) {
 
-        //TODO: validate result
+            showMessage('❌ ' + result.message);
+            return;
+        }
         navigate(`/plants/details/${plantId}`);
     }
 

@@ -9,14 +9,12 @@ import { useComments } from "../../api/commentApi";
 
 export default function PlantGarden() {
 
-    const { _id } = useAuth();
+    const { _id, email } = useAuth();
 
     const [plants] = usePlants({
         sortBy: 'status asc',
         where: `_ownerId="${_id}"`,
     });
-
-    
 
     const [comments, setComments] = useComments('', _id);
 
@@ -30,9 +28,10 @@ export default function PlantGarden() {
     return (
         <>
             <SubHeader subtitle="Home" title="Personal Garden" />
+            
             <SwiperPlants
                 plants={plants}
-                title="Your own home plants "
+                title={`${email} - home plants`} 
                 subtitle="Catalog 🌿" />
 
             <div className="mb-5 d-flex justify-content-center flex-column">

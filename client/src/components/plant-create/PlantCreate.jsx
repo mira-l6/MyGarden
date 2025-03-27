@@ -4,16 +4,25 @@ import { useNavigate } from 'react-router';
 import SubHeader from "../subheader/SubHeader";
 
 import './Create.css';
+import { useMessageContext } from "../../contexts/MessageContext";
 
 export default function PlantCreate() {
 
     const { create } = useCreatePlant();
     const navigate = useNavigate();
+    const { showMessage } = useMessageContext();
 
-    const createAction = (formData) => {
+    const createAction = async (formData) => {
 
         const plantData = Object.fromEntries(formData);
-        create(plantData);
+        const result = await create(plantData);
+        console.log(result);
+
+        if (!result.common_name) {
+
+            showMessage('❌ ' + result.message);
+            return;
+        }
 
         navigate('/plants');
     }

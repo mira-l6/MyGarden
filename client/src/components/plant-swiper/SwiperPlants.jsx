@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import './SwiperPlants.css';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 export default function SwiperPlants({
     plants,
@@ -26,7 +26,6 @@ export default function SwiperPlants({
             <div className="services-carousel-wrap">
                 <div className="container">
                     <div className="swiper init-swiper">
-                        {/* Swiper Configuration */}
                         <Swiper
                             modules={[Navigation, Pagination, Autoplay]}
                             loop={true}
@@ -81,6 +80,9 @@ export default function SwiperPlants({
 
 
                         </Swiper>
+                        {plants.length <= 0 &&
+                            <h4><Link to='/plants/create' className='redirect-text text-dark'>You currently have no posts. Create some...</Link></h4>
+                        }
                         <div className="swiper-pagination"></div>
                     </div>
                 </div>
