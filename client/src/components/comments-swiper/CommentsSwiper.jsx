@@ -4,6 +4,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import '../plant-swiper/SwiperPlants.css';
 import { useDeleteComment } from '../../api/commentApi';
 import { useMessageContext } from '../../contexts/MessageContext';
+import useAuth from '../../hooks/useAuth';
 
 export default function CommentsSwiper({
     comments,
@@ -13,6 +14,8 @@ export default function CommentsSwiper({
 
     const { remove } = useDeleteComment();
     const { showMessage } = useMessageContext();
+
+    const { _id } = useAuth();
 
     const deleteHandler = async (commentId) => {
 
@@ -85,7 +88,8 @@ export default function CommentsSwiper({
                                         </div>
 
                                         {/* TODO: only for creators */}
-                                        <button className="absolute top-10 right-10 text-lg" onClick={() => deleteHandler(comment._id)}>❌</button>
+                                        {comment._ownerId == _id &&
+                                            <button className="absolute top-10 right-10 text-lg" onClick={() => deleteHandler(comment._id)}>❌</button>}
                                     </div>
                                 </SwiperSlide>
                             ))

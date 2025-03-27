@@ -8,7 +8,6 @@ import CommentsCreate from "../comments-create/CommentsCreate";
 import PlantDeletePopup from "./plant-delete-popup/PlantDeletePopup";
 import { useComments } from "../../api/commentApi";
 import { useUserContext } from "../../contexts/UserContext";
-import PlantOwnerGuard from "../guards/PlantOwnerGuard";
 import { useMessageContext } from "../../contexts/MessageContext";
 import useAuth from "../../hooks/useAuth";
 
@@ -23,7 +22,9 @@ export default function PlantDetails() {
     const { plantId } = useParams();
     const [plant, pending] = usePlant(plantId);
 
+    
     const isOwner = plant._ownerId == _id ? true : false;
+    const isOwnerState = isOwner ? 'owner' : 'nonowner';
 
     const [comments, setComments] = useComments(plantId);
 
@@ -121,11 +122,9 @@ export default function PlantDetails() {
 
                                 {isOwner &&
                                     <div className="buttons flex gap-4 mt-6">
-                                        <PlantOwnerGuard plant={plant} plantId={plantId}>
-                                            <button className="px-4 py-2 text-white bg-green-600 rounded-lg shadow-md hover:bg-gray-300 transition">
-                                                <Link to={`/plants/edit/${plantId}`} state={{ owner: isOwner }} className="edit-button text-white no-underline">Edit</Link>
-                                            </button>
-                                        </PlantOwnerGuard>
+                                        <button className="px-4 py-2 text-white bg-green-600 rounded-lg shadow-md hover:bg-gray-300 transition">
+                                            <Link to={`/plants/edit/${plantId}`} state={isOwnerState} className="edit-button text-white no-underline">Edit</Link>
+                                        </button>
                                         <button className="delete-button text-white px-4 py-2 bg-red-500 rounded-lg shadow-md hover:bg-red-700 transition" onClick={revealDelete}>Delete</button>
                                     </div>}
 

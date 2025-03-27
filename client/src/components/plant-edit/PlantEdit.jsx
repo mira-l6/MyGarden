@@ -5,16 +5,21 @@ import SubHeader from "../subheader/SubHeader";
 import '../plant-create/Create.css';
 import { useEditPlant, usePlant } from '../../api/plantApi';
 import { useMessageContext } from '../../contexts/MessageContext';
+import { useEffect } from 'react';
+import requester from '../../utils/requester';
+import useAuth from '../../hooks/useAuth';
 
 export default function PlantEdit() {
 
-    const { plantId } = useParams();
-    const [plant,] = usePlant(plantId);
-
-    const { edit } = useEditPlant();
-
     const navigate = useNavigate();
     const { showMessage } = useMessageContext();
+
+    const { _id } = useAuth();
+
+    const { plantId } = useParams();
+    const [plant] = usePlant(plantId);
+
+    const { edit } = useEditPlant();
 
     const editAction = async (formData) => {
 
@@ -28,6 +33,17 @@ export default function PlantEdit() {
         }
         navigate(`/plants/details/${plantId}`);
     }
+
+    useEffect(() => {
+
+        requester.get(`http://localhost:3030/data/plants/${plantId}`)
+            .then(data => {
+                if (data._ownerId != _id) {
+                    showMessage('❌ You are not the owner of this plant.');
+                    navigate(`/plants/details/${plantId}`)
+                }
+            })
+    }, [plantId, showMessage, navigate, _id])
 
     return (
         <div className="create-container">
