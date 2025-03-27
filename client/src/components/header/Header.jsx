@@ -5,9 +5,8 @@ import useAuth from '../../hooks/useAuth';
 
 export default function Header() {
 
-    const { email, isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
 
-    console.log(email, isAuthenticated)
     // const logoutHandler = async () => {
 
     //     setShowMessage(true);

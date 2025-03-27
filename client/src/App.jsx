@@ -15,41 +15,48 @@ import PlantDetails from './components/plant-details/PlantDetails';
 import Register from './components/register/Register';
 
 import UserProvider from './providers/UserProvider';
+import MessageProvider from './providers/MessageProvider';
+
 import PlantCreate from './components/plant-create/PlantCreate';
 import PlantEdit from './components/plant-edit/PlantEdit';
 import PlantGarden from './components/plant-garden/PlantGarden';
 import AuthGuard from './components/guards/AuthGuard';
 import GuestGuard from './components/guards/GuestGuard';
 import Logout from './components/logout/Logout';
+import Message from './components/message/Message';
 
 function App() {
 
   return (
-    <UserProvider>
-      <Header />
+    <MessageProvider>
+      <UserProvider>
+        <Header />
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/plants' element={<Catalog />} />
-        <Route path='/plants/details/:plantId' element={<PlantDetails />} />
-        <Route element={<AuthGuard />}>
-          <Route path='/plants/create' element={<PlantCreate />} />
-          <Route path='/plants/edit/:plantId' element={<PlantEdit />} />
-          <Route path='/plants/garden' element={<PlantGarden />} />
-          <Route path='/logout' element={<Logout />}/>
-        </Route>
-        <Route element={<GuestGuard />}>
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-        </Route>
-      </Routes>
+        <Message />
 
-      <Footer />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/plants' element={<Catalog />} />
+          <Route path='/plants/details/:plantId' element={<PlantDetails />} />
+          <Route element={<AuthGuard />}>
+            <Route path='/plants/create' element={<PlantCreate />} />
+            <Route path='/plants/edit/:plantId' element={<PlantEdit />} />
+            <Route path='/plants/garden' element={<PlantGarden />} />
+            <Route path='/logout' element={<Logout />} />
+          </Route>
+          <Route element={<GuestGuard />}>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Route>
+        </Routes>
 
+        <Footer />
 
-    </UserProvider>
+      </UserProvider>
+    </MessageProvider>
   )
 }
+
 
 export default App;

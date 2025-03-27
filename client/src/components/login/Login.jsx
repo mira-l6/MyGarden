@@ -6,11 +6,13 @@ import SubHeader from "../subheader/SubHeader";
 import { Link, useNavigate } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useMessageContext } from "../../contexts/MessageContext";
 
 export default function Login() {
 
   const navigate = useNavigate();
   const { userLoginHandler } = useContext(UserContext);
+  const { showMessage } = useMessageContext();
 
   const { login } = useLogin();
   const loginAction = async (formData) => {
@@ -19,6 +21,11 @@ export default function Login() {
 
     const result = await login(email, password);
 
+    if (!result.email) {
+
+      showMessage('❌ ' + result.message);
+      return;
+    }
     userLoginHandler(result);
 
     navigate('/plants');

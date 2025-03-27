@@ -6,6 +6,7 @@ import { UserContext } from "../../contexts/UserContext";
 
 import SubHeader from "../subheader/SubHeader";
 import "../login/Login.css"; // Reusing same styles
+import { useMessageContext } from "../../contexts/MessageContext";
 
 
 export default function Register() {
@@ -14,18 +15,25 @@ export default function Register() {
   const { userLoginHandler } = useContext(UserContext);
 
   const navigate = useNavigate();
+  const { showMessage } = useMessageContext();
 
   const registerAction = async (formData) => {
 
     const { email, password, confirmPassword } = Object.fromEntries(formData);
 
     if (password !== confirmPassword) {
-      console.log('Passwords missmatch')
-      //TODO: error handling
+
+      showMessage('❌ Passwords missmatch!')
       return;
     }
 
     const result = await register(email, password);
+
+    if(!result.email){
+      
+      showMessage('❌ ' + result.message);
+      return;
+    }
 
     userLoginHandler(result);
     navigate('/plants');

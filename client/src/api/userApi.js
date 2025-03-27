@@ -41,13 +41,24 @@ export function useLogout() {
             return;
         }
 
-        request.get(`${baseUrl}/logout`)
-            .then(userLogoutHandler);
+        try {
+
+            request.post(`${baseUrl}/logout`)
+                .then(() => {
+                    userLogoutHandler();
+                });
+        } catch (err) {
+
+            console.log(err.message);
+        }
+
 
     }, [accessToken, userLogoutHandler, request]);
 
+    const isLoggedOut = !!accessToken;
+
     return {
-        isLoggedOut: !!accessToken,
+        isLoggedOut,
     };
 }
 
