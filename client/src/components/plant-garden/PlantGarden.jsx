@@ -16,8 +16,16 @@ export default function PlantGarden() {
         where: `_ownerId="${_id}"`,
     });
 
-    const [comments] = useComments('', _id);
-    console.log(comments)
+    
+
+    const [comments, setComments] = useComments('', _id);
+
+    const commentDeleteHandler = (value) => {
+
+        setComments(state => {
+            return state.filter(s => s._id!== value);
+        })
+    }
 
     return (
         <>
@@ -30,9 +38,14 @@ export default function PlantGarden() {
             <div className="mb-5 d-flex justify-content-center flex-column">
                 <h3 className="ps-5 text-center">Some of your comments</h3>
                 <hr />
-                <CommentsSwiper 
+
+                {comments.length > 0 
+                    ?<CommentsSwiper 
                     comments={comments}
-                    isUserImage={false} />
+                    isUserImage={false}
+                    onDelete={commentDeleteHandler} />
+                    : <h5 className="text-center">You have not made any comments</h5>}
+                
             </div>
         </>
     );

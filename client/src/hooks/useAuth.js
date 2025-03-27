@@ -1,15 +1,16 @@
+import { useUserContext } from "../contexts/UserContext";
 import requester from "../utils/requester";
 
 export default function useAuth() {
 
-    const authData = JSON.parse(localStorage.getItem('auth'));
+    const authData = useUserContext();
 
     const authRequest = (method, url, data, options) => {
 
         const authOptions = {
             ...options,
             headers: {
-                'X-Authorization': authData?.accessToken,
+                'X-Authorization': authData.accessToken,
                 ...options?.headers
             }
         }
@@ -19,7 +20,7 @@ export default function useAuth() {
 
     return {
         ...authData,
-        isAuthenticated: !!authData?.accessToken,
+        isAuthenticated: !!authData.accessToken,
         request: {
             get: authRequest.bind(null, 'get'),
             post: authRequest.bind(null, 'post'),

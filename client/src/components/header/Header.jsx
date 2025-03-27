@@ -1,34 +1,26 @@
 import logo from '../../assets/img/logo.png';
 
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import useAuth from '../../hooks/useAuth';
-import { useState } from 'react';
-import { useLogout } from '../../api/userApi';
-import { useUserContext } from '../../contexts/UserContext';
 
 export default function Header() {
 
-    const { email } = useAuth();
+    const { email, isAuthenticated } = useAuth();
 
-    const { userLogoutHandler } = useUserContext();
-    const { logout } = useLogout();
+    console.log(email, isAuthenticated)
+    // const logoutHandler = async () => {
 
-    const [showMessage, setShowMessage] = useState();
-    const navigate = useNavigate();
+    //     setShowMessage(true);
 
-    const logoutHandler = async () => {
+    //     await logout();
+    //     userLogoutHandler();
 
-        setShowMessage(true);
+    //     setTimeout(() => {
+    //         setShowMessage(false)
+    //     }, 5000);
 
-        await logout();
-        userLogoutHandler();
-
-        setTimeout(() => {
-            setShowMessage(false)
-        }, 5000);
-
-        navigate('/');
-    }
+    //     navigate('/');
+    // }
 
     return (
         <header id="header" className="header d-flex align-items-center position-relative">
@@ -46,10 +38,10 @@ export default function Header() {
                         <Link to="/plants?page=1">Plant Catalog</Link>
                         <Link to="/about">About</Link>
 
-                        {email
+                        {isAuthenticated
                             ? (
                                 <>
-                                    <Link onClick={logoutHandler}>Logout</Link>
+                                    <Link to='/logout'>Logout</Link>
 
                                     <li className="dropdown">
                                         <a href="#"><span>Plant Managment</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -79,11 +71,7 @@ export default function Header() {
 
             </div>
 
-            {showMessage && (
-                <div className="fixed top-6 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded-lg shadow-lg transition-opacity duration-300">
-                    ✅ You have been logged out successfully.
-                </div>
-            )}
+            {/* {showMessage && <Message message='✅ You have been logged out successfully.'/>} */}
         </header>
     );
 }

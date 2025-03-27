@@ -1,5 +1,7 @@
 import requester from "../utils/requester";
 import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
+import { useUserContext } from "../contexts/UserContext";
 
 const baseUrl = 'http://localhost:3030/users';
 
@@ -31,19 +33,22 @@ export function useRegister() {
 
 export function useLogout() {
 
-    const { accessToken, request } = useAuth();
+    const { accessToken, userLogoutHandler } = useUserContext();
+    const { request } = useAuth();
 
-    const logout = () => {
+    useEffect(() => {
+        if (!accessToken) {
+            return;
+        }
 
-        const result = request.post(`${baseUrl}/logout`);
-        //TODO: validate
-        return result
-    }
+        request.get(`${baseUrl}/logout`)
+            .then(userLogoutHandler);
+
+    }, [accessToken, userLogoutHandler, request]);
 
     return {
-        logout,
-        isLoggedOut: !!accessToken
-    }
+        isLoggedOut: !!accessToken,
+    };
 }
 
 export function useUser() {
@@ -54,7 +59,6 @@ export function useUser() {
 
         console.log(`${baseUrl}/${userId}`)
         const result = await request.get(`http://localhost:3030/users/me`);
-        console.log(result)
         //TODO: validate
         return result;
     }
