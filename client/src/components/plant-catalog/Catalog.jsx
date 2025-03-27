@@ -7,11 +7,10 @@ import ReactPaginate from "react-paginate";
 
 import { usePlants } from '../../api/plantApi.js';
 import { usePageChange } from '../../hooks/usePageChange.js';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Catalog() {
 
-    //TODO: if this uncontrolled way doesnt work i need to make it controlled with form and action!!s
     const [search, setSearch] = useState('');
 
     const { filter, setFilter, pageClickHandler } = usePageChange({
@@ -22,12 +21,10 @@ export default function Catalog() {
 
     const [plants, pending, totalPages] = usePlants(filter);
 
-    //TODO: use debounce and optimistic update
-    useEffect(() => {
-
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
         setFilter((state) => ({ ...state, search }));
-
-      }, [search, setFilter]);
+    };
 
     return (
         <>
@@ -40,17 +37,28 @@ export default function Catalog() {
                     <p>Enjoy selecting your favourite home plants</p>
                 </div>
 
-                <div className="search-input mb-4">
-                    <div className="search-container">
+                <form onSubmit={handleSearchSubmit} className="search-input mb-4">
+
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setSearch('');
+                            setFilter((state) => ({ ...state, search: '' }));
+                        }}
+                        className="px-4 py-2 bg-white text-black text-decoration-underline rounded-lg hover:bg-gray-400"
+                    >
+                        Home
+                    </button>
+                    <div className="search-container relative">
                         <input
                             type="text"
                             placeholder="Search..."
                             name='search'
-                            value={search || ''}
+                            value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         />
-                        <button className="absolute inset-y-0 right-3 flex items-center">
+                        <button type="submit" className="absolute inset-y-0 right-3 flex items-center">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-5 h-5 text-gray-500 hover:text-gray-700"
@@ -67,7 +75,7 @@ export default function Catalog() {
                             </svg>
                         </button>
                     </div>
-                </div>
+                </form>
 
                 <div className="container">
 
