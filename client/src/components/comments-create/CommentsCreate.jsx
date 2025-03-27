@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 import { useCreateComment } from "../../api/commentApi";
 import { usePlant } from "../../api/plantApi";
 import useAuth from "../../hooks/useAuth";
+import { useMessageContext } from "../../contexts/MessageContext";
 
 export default function CommentsCreate({
     plantId,
@@ -10,8 +12,10 @@ export default function CommentsCreate({
     const { create } = useCreateComment();
     const { email } = useAuth();
 
-    const [ plant ] = usePlant(plantId);
-    
+    const [plant] = usePlant(plantId);
+
+    const { showMessage } = useMessageContext();
+    const navigate = useNavigate();
 
     const createAction = async (formData) => {
 
@@ -25,6 +29,12 @@ export default function CommentsCreate({
         };
 
         const result = await create(payload);
+        if (!result.comment) {
+
+            showMessage('❌ ' + result.message);
+            return navigate(`/plants/details/${plantId}`);
+        }
+
         onCreate(result);
     }
 

@@ -3,6 +3,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import '../plant-swiper/SwiperPlants.css';
 import { useDeleteComment } from '../../api/commentApi';
+import { useMessageContext } from '../../contexts/MessageContext';
 
 export default function CommentsSwiper({
     comments,
@@ -11,10 +12,17 @@ export default function CommentsSwiper({
 }) {
 
     const { remove } = useDeleteComment();
+    const { showMessage } = useMessageContext();
 
     const deleteHandler = async (commentId) => {
 
-        await remove(commentId);
+        const result = await remove(commentId);
+        if (result.message) {
+
+            showMessage('❌ ' + result.message);
+            return;
+        }
+
         onDelete(commentId);
     }
 
