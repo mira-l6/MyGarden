@@ -1,25 +1,34 @@
 import image from '../../../assets/img/img_sq_8.jpg';
-
 import './IndexAbout.css';
 
 export default function IndexAbout() {
     return (
-        <section id="about-3" className="about-3 section">
-
-            <div id='indexAbout' className="container">
-                <div className="row gy-4 justify-content-between align-items-center">
-                    <div className="col-lg-6 order-lg-2 position-relative plan-item" data-aos="zoom-out">
-                        <img src={image} alt="Plant image" className="img-fluid plant-image" />
+        <section id="about" className="about-section">
+            <div className="container">
+                <div className="about-content">
+                    {/* Image Column - appears second on desktop, first on mobile */}
+                    <div className="about-image" data-aos="zoom-out">
+                        <img 
+                            src={image} 
+                            alt="Healthy indoor plant in pot" 
+                            className="plant-image" 
+                        />
                     </div>
-                    <div className="col-lg-5 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                        <h2 className="content-title mb-4">Plants Make Life Better</h2>
-                        <p className="mb-5">
-                            Explore, Learn, and Grow
-                            Take a stroll through the garden to discover different plant varieties, learn about their benefits, and gain tips on how to care for them. Whether you are a seasoned gardener or just starting out, there’s always something new to discover in the world of plants.
 
-                        </p>
-
-                        {/* <Link to="/login" className="btn-cta">Create your Garden</Link> */}
+                    {/* Text Content Column - appears first on desktop, second on mobile */}
+                    <div className="about-text" data-aos="fade-up" data-aos-delay="100">
+                        <h2 className="about-title">Plants Make Life Better</h2>
+                        <div className="about-description">
+                            <p>
+                                Explore, Learn, and Grow with our virtual garden. Take a stroll through our 
+                                collection to discover different plant varieties, learn about their benefits, 
+                                and gain expert tips on plant care.
+                            </p>
+                            <p>
+                                Whether you are a seasoned gardener or just starting your green journey, 
+                                there is always something new to discover in the wonderful world of plants.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
