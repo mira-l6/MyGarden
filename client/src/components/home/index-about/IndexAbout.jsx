@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import image from '../../../assets/img/img_sq_8.jpg';
 
 import './IndexAbout.css';
@@ -20,7 +19,7 @@ export default function IndexAbout() {
 
                         </p>
 
-                        <p><Link to="/login" className="btn-cta">Create your Garden</Link></p>
+                        {/* <Link to="/login" className="btn-cta">Create your Garden</Link> */}
                     </div>
                 </div>
             </div>

@@ -1,76 +1,65 @@
-import logo from '../../assets/img/logo.png';
-
+import { useState } from 'react';
 import { Link } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import logo from '../../assets/img/logo.png';
+import './Header.css';
 
 export default function Header() {
-
     const { isAuthenticated } = useAuth();
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
-    // const logoutHandler = async () => {
-
-    //     setShowMessage(true);
-
-    //     await logout();
-    //     userLogoutHandler();
-
-    //     setTimeout(() => {
-    //         setShowMessage(false)
-    //     }, 5000);
-
-    //     navigate('/');
-    // }
+    const toggleNav = () => {
+        setIsNavCollapsed(!isNavCollapsed);
+    };
 
     return (
-        <header id="header" className="header d-flex align-items-center position-relative">
-            <div className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-                <Link to="/" className="logo d-flex align-items-center">
+        <header id="header" className="header">
+            <div className="container-fluid container-xl header-container">
+                {/* Logo */}
+                <Link to="/" className="logo">
                     <img src={logo} alt="GardenLogo" />
                     <h1 className="sitename">Virtual garden</h1>
                 </Link>
 
-                <nav id="navmenu" className="navmenu">
+                {/* Mobile Toggle Button */}
+                <button 
+                    className="mobile-nav-toggle d-xl-none" 
+                    onClick={toggleNav}
+                    aria-expanded={!isNavCollapsed}
+                >
+                    <i className={isNavCollapsed ? "bi bi-list" : "bi bi-x"}></i>
+                </button>
+
+                {/* Navigation */}
+                <nav 
+                    id="navmenu" 
+                    className={`navmenu ${isNavCollapsed ? 'collapsed' : 'expanded'}`}
+                >
                     <ul>
+                        <li><Link to="/" onClick={() => setIsNavCollapsed(true)}>Home</Link></li>
+                        <li><Link to="/plants?page=1" onClick={() => setIsNavCollapsed(true)}>Plant Catalog</Link></li>
+                        <li><Link to="/about" onClick={() => setIsNavCollapsed(true)}>About</Link></li>
 
-                        <Link to="/">Home</Link>
-                        <Link to="/plants?page=1">Plant Catalog</Link>
-                        <Link to="/about">About</Link>
-
-                        {isAuthenticated
-                            ? (
-                                <>
-                                    <Link to='/logout'>Logout</Link>
-
-                                    <li className="dropdown">
-                                        <a href="#"><span>Plant Managment</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
-                                        <ul>
-                                            <li><a href="#"></a></li>
-                                            <li className="dropdown">
-                                                <a href="#"><span>Managment</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
-                                                <ul>
-                                                    <li><Link to="/plants/garden">Personal Garden</Link></li>
-                                                    <li><Link to="/plants/create">Create</Link></li>
-                                                </ul>
-                                            </li>
-                                            <li><Link to="/plants">Seach for additions</Link></li>
-                                        </ul>
-                                    </li>
-                                </>
-                            )
-                            : (<>
-
-                                <Link to="/register">Register</Link>
-                                <Link to="/login">Login</Link>
-                            </>)
-                        }
+                        {isAuthenticated ? (
+                            <>
+                                <li><Link to='/logout' onClick={() => setIsNavCollapsed(true)}>Logout</Link></li>
+                                <li className="dropdown">
+                                    <a href="#"><span>Plant Management</span> <i className="bi bi-chevron-down"></i></a>
+                                    <ul className="dropdown-menu">
+                                        <li><Link to="/plants/garden" onClick={() => setIsNavCollapsed(true)}>Personal Garden</Link></li>
+                                        <li><Link to="/plants/create" onClick={() => setIsNavCollapsed(true)}>Create</Link></li>
+                                    </ul>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to="/register" onClick={() => setIsNavCollapsed(true)}>Register</Link></li>
+                                <li><Link to="/login" onClick={() => setIsNavCollapsed(true)}>Login</Link></li>
+                            </>
+                        )}
                     </ul>
-                    <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
-
             </div>
-
-            {/* {showMessage && <Message message='✅ You have been logged out successfully.'/>} */}
         </header>
     );
 }

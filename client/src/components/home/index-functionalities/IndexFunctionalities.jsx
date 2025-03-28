@@ -37,7 +37,7 @@ const functionalities = [
                 </g>
         },
         heading: 'Share plants with other users',
-        description: 'Experience what other have created too and add to your own garden'
+        description: 'Experience what other have created too and comment on their plants'
     },
     {
         id: '04',

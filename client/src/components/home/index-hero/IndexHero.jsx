@@ -12,7 +12,7 @@ export default function IndexHero() {
                     <img src={hero1} alt="" />
                     <div className="carousel-container">
                         <h2>Create and manage your virtual garden</h2>
-                        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                        <p>Easily design and build your own virtual garden from scratch, where you can add plants, track their growth, and monitor their care needs.</p>
                     </div>
                 </div>
 
@@ -20,7 +20,7 @@ export default function IndexHero() {
                     <img src={hero2} alt="" />
                     <div className="carousel-container">
                         <h2>Organise your own existing garden</h2>
-                        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                        <p>Transform your real-life garden into a digital representation by cataloging your plants in our easy-to-use garden management tool.</p>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@ export default function IndexHero() {
                     <img src={hero3} alt="" />
                     <div className="carousel-container">
                         <h2>Gather new information about variations of unique plants</h2>
-                        <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                        <p>Discover and learn about a vast array of plant species, including rare and unique variations, with detailed information and growth guidelines at your fingertips. </p>
                     </div>
                 </div>
 
