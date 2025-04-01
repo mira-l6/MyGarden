@@ -50,7 +50,6 @@
     height: auto;
     display: block;
     transition: transform 0.3s ease;
-    border-radius: 12px;
 }
 
 .about-image:hover .plant-image {
