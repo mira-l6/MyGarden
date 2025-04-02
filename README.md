@@ -12,10 +12,7 @@ Welcome to Virtual Garden Manager, a web application that helps you manage your 
 
 ## Getting Started
 1. Clone the repository.
-2. Install dependencies with 
-    ```
-    npm install
-    ```
+2. Install dependencies in the `client` folder with `npm install`.
 3. In the folder `client` run the command `npm run dev`
 3. In the folder `server` run the command `node ./server.js`.
 4. Sign up and start managing your virtual garden! 
