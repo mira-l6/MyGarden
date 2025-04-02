@@ -8,7 +8,6 @@ import useAuth from '../../hooks/useAuth';
 
 export default function CommentsSwiper({
     comments,
-    isUserImage,
     onDelete
 }) {
 
@@ -74,14 +73,14 @@ export default function CommentsSwiper({
                             comments.map((comment, index) => (
                                 <SwiperSlide key={comment._id || index} className="p-4">
                                     <div className="bg-white rounded-lg shadow-md p-4 flex items-start gap-4 sm:flex-row flex-col sm:items-center max-w-full">
-                                        <img
+                                        {/* <img
                                             className="user-image w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                                             src={isUserImage
                                                 ? "https://img.freepik.com/premium-vector/person-with-green-blue-logo-that-says-name_1076610-66914.jpg"
                                                 : comment.plantImage
                                             }
                                             alt="User Avatar"
-                                        />
+                                        /> */}
                                         <div className="w-full overflow-hidden">
                                             <h4 className="comment-user text-sm font-semibold text-gray-800 break-words">{comment.email}</h4>
                                             <p className="comment-text text-dark text-sm break-words overflow-hidden">{comment.comment}</p>

@@ -27,9 +27,9 @@ export default function Footer() {
                         <div className="col-lg-2 col-md-3 footer-links">
                             <h4>Our resources</h4>
                             <ul>
-                                <li><Link to="#">Web Design</Link></li>
-                                <li><Link to="#">Web Development</Link></li>
-                                <li><Link to="#">Product Management</Link></li>
+                                <li><Link to="/login">Sign up</Link></li>
+                                <li><Link to="/plants/garden">Plant Garden</Link></li>
+                                <li><Link to="/plants/create">Create a plant</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -47,15 +47,6 @@ export default function Footer() {
                             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
                         </div>
                     </div>
-
-                    {/* mention my social medias and softuni */}
-                    {/* <div className="social-links order-first order-lg-last mb-3 mb-lg-0">
-                        <a href=""><i className="bi bi-twitter-x"></i></a>
-                        <a href=""><i className="bi bi-facebook"></i></a>
-                        <a href=""><i className="bi bi-instagram"></i></a>
-                        <a href=""><i className="bi bi-linkedin"></i></a>
-                    </div> */}
-
                 </div>
             </div>
 
