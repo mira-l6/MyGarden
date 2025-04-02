@@ -27,6 +27,7 @@ export default function PlantDetails() {
     const isOwnerState = isOwner ? 'owner' : 'nonowner';
 
     const [comments, setComments] = useComments(plantId);
+    console.log(comments)
 
     const { deletePlant } = useDeletePlant();
     const [showDelete, setShowDelete] = useState(false);
